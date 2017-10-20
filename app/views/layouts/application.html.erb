@@ -9,6 +9,12 @@
   </head>
 
   <body>
+    <span class="alerts">
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+    </span>
+    
+    <%= link_to "Home", kittens_path %>
     <%= yield %>
   </body>
 </html>

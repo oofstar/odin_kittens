@@ -2,6 +2,9 @@ class KittensController < ApplicationController
 
   def index
     @kittens = Kitten.all
+    @response = HTTParty.get("https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=#{ENV['FLICKR_KEY']}&tags=kittens&per_page=#{@kittens.length}&format=rest")
+    @pics = @response["rsp"]["photos"]["photo"]
+
     if @kittens.count < 1
       @message = "no kittens to display"
     else
